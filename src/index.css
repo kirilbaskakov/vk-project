@@ -1,13 +1,245 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --fs-small: 12px;
+  --fs-medium: 16px;
+  --fs-large: 24px;
+
+  --color-white: white;
+  --color-gray: rgb(200, 200, 200);
+  --color-dark-gray: rgb(100, 100, 100);
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  text-align: center;
+}
+
+.header {
+  padding: 0.5rem 2rem;
+  background-color: rgb(232, 74, 56);
+  color: white;
+}
+
+.main {
+  background-color: rgb(20, 20, 20);
+  min-height: 100vh;
+  padding: 1rem 2rem;
+  color: var(--color-white);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.film-cards {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .film-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .film-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.film-card {
+  cursor: pointer;
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+.film-card:hover {
+  scale: 1.05;
+}
+
+.film-card__image {
+  width: 100%;
+}
+
+.film-card__text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.film-card__title,
+.film-card__date {
+  color: var(--color-gray);
+}
+
+.film-card__title {
+  font-size: var(--fs-medium);
+  font-weight: 100;
+}
+
+.film-card__date {
+  font-size: var(--fs-small);
+}
+
+.film-card__rate {
+  font-size: var(--fs-large);
+  font-weight: bold;
+}
+
+.pagination {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pagination__page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid var(--color-gray);
+  color: var(--color-gray);
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: var(--fs-medium);
+  background-color: transparent;
+}
+
+.pagination__page:hover {
+  background-color: var(--color-gray);
+  color: var(--color-dark-gray);
+}
+
+.pagination__page.selected {
+  background-color: var(--color-white);
+  color: var(--color-dark-gray);
+}
+
+.pagination__page.hidden {
+  visibility: hidden;
+}
+
+.details__rate {
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  font-size: var(--fs-medium);
+}
+
+.details__description {
+  margin-top: 1rem;
+  color: var(--color-gray);
+  text-wrap: wrap;
+  word-wrap: break-word;
+}
+
+.details__image {
+  width: 100%;
+}
+
+.features {
+  margin-top: 1.5rem;
+}
+
+.feature__title {
+  font-weight: bold;
+}
+
+.feature {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.feature + .feature {
+  margin-top: 0.5rem;
+}
+
+.carousel {
+  display: flex;
+  gap: 1rem;
+}
+
+.carousel__arrow {
+  padding: 1rem;
+  border: none;
+  background-color: transparent;
+  color: var(--color-white);
+  font-size: 50px;
+}
+
+.carousel__slides {
+  display: flex;
+  gap: 1rem;
+}
+
+.similar-films {
+  clear: both;
+  margin-top: 2rem;
+}
+
+.similar-films__items {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .details__image {
+    float: right;
+    width: 45%;
+    margin-left: 1rem;
+  }
+
+  .similar-films__items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .details__image {
+    float: right;
+    width: 30%;
+    margin-left: 1rem;
+  }
+
+  .similar-films__items {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
