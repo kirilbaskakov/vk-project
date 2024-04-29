@@ -15,11 +15,15 @@ const Card = ({ film }) => {
         src={film.poster.previewUrl}
         alt={`Постер "${film.name}"`}
       />
-      <div className="film-card__text">
-        <span className="film-card__rate">{film.rating.imdb}</span>
-        <div>
-          <h3 className="film-card__title">{film.name}</h3>
-          <span className="film-card__date">{film.year}</span>
+      <div className="film-card__text-container">
+        <div className="film-card__text">
+          {film?.rating?.imdb && (
+            <span className="film-card__rate">{film.rating.imdb}</span>
+          )}
+          <div>
+            <h3 className="film-card__title">{film.name}</h3>
+            <span className="film-card__date">{film.year}</span>
+          </div>
         </div>
       </div>
     </div>

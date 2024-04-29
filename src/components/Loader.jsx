@@ -4,7 +4,7 @@ const Loader = () => {
   return (
     <div class="loader-container">
       <div class="loader"></div>
-      <h2>Загрузка...</h2>
+      <h1 className="loader__text">Загрузка...</h1>
     </div>
   );
 };
